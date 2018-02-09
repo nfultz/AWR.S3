@@ -1,10 +1,10 @@
 Package: AWR.S3
 Type: Package
-Title: Submit Jobs to Amazon Batch
+Title: Interact with Amazon Simple Cloud Storage Service
 Version: 0.1.0
 Author: Neal Fultz
 Maintainer: Neal Fultz <nfultz@gmail.com>
-Description: AWS Batch enables developers, scientists, and engineers to easily
+Description: AWS S3 enables developers, scientists, and engineers to easily
     and efficiently run hundreds of thousands of batch computing jobs on AWS.
     AWR.S3 lets you submit jobs directly from R.
 License: What license is it under?
