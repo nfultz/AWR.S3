@@ -60,7 +60,7 @@ s3_list_files <- function(bucket, key, client=s3_client()) {
       obj$getKey(),
       obj$getETag(),
       obj$getSize(),
-      as.POSIXct(obj$getLastModified()$getTime(), origin=origin),
+      as.POSIXct(obj$getLastModified()$getTime()  / 1000, origin=origin),
       obj$getStorageClass(),
       obj$getOwner()
     )
