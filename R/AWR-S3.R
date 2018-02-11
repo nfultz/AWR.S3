@@ -15,25 +15,28 @@ NULL
 #' @export
 #' @rdname AWR.S3
 s3_put_file <- function(bucket, key, local_file, client=s3_client()) {
-
+  local_file <- .jnew("java.io.File", local_file)
+  client$putObject(bucket, key, local_file)
 }
 
 #' @export
 #' @rdname AWR.S3
 s3_get_file <- function(bucket, key, local_file, client=s3_client()) {
-
+  request <- .jnew("com.amazonaws.services.s3.model.GetObjectRequest", bucket, key)
+  local_file <- .jnew("java.io.File", local_file)
+  client$getObject(request, local_file)
 }
 
 #' deletes an object from an S3 bucket
 #' @export
 #' @rdname AWR.S3
 s3_delete_file <- function(bucket, key, client=s3_client()) {
-
+  client$deleteObject(bucket, key)
 }
 
 #' @export
 #' @rdname AWR.S3
-s3_list_files <- function(bucket, key, client=s3_client()) {
+s3_list_files <- function(bucket, key="", client=s3_client()) {
 
   listResult <- client$listObjectsV2(bucket, key)
   summaries <- listResult$getObjectSummaries()
